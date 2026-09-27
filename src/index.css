@@ -2,6 +2,7 @@
 
 @layer base {
   :root {
+    --accent-color: #C6FF00;
     --color-lime: #c6ff00;
     --color-lime-bright: #d4ff00;
     --color-bg: #0a0a0a;

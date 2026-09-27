@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
+import Preloader from './components/Preloader'
 import Home from './pages/Home'
 import Programs from './pages/Programs'
 import Trainers from './pages/Trainers'
@@ -9,7 +10,9 @@ import Contact from './pages/Contact'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <>
+      <Preloader />
+      <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
@@ -21,5 +24,6 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </>
   )
 }
