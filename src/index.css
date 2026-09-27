@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-lime: #c6ff00;
+    --color-lime-bright: #d4ff00;
+    --color-bg: #0a0a0a;
+    --color-card: #111111;
+    --color-card-alt: #151515;
+    --color-border: #1f1f1f;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Lenis requires html to NOT have scroll-behavior: smooth
+     as Lenis handles smooth scrolling itself */
+  html {
+    /* scroll-behavior is intentionally omitted — Lenis manages this */
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
+  body {
+    background-color: #0a0a0a;
+    color: #ffffff;
+    font-family: 'Inter', 'Montserrat', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    /* Prevent horizontal scroll on mobile */
+    overflow-x: hidden;
+  }
+
+  /* Ensure images don't overflow on small screens */
+  img {
+    max-width: 100%;
+  }
+
+  ::selection {
+    background-color: #c6ff00;
+    color: #000000;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c6ff00;
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  .lime-glow {
+    box-shadow: 0 0 20px rgba(198, 255, 0, 0.3);
+  }
+  .lime-glow-text {
+    text-shadow: 0 0 30px rgba(198, 255, 0, 0.5);
+  }
+  .text-lime {
+    color: #c6ff00;
+  }
+  .bg-lime {
+    background-color: #c6ff00;
+  }
+  .border-lime {
+    border-color: #c6ff00;
+  }
+  .hero-text-shadow {
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+  }
+  /* Hide scrollbar utility for horizontal scroll containers */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
