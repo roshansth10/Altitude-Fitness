@@ -1,92 +1,86 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 
 export default function Preloader() {
   const [progress, setProgress] = useState(1)
   const [isFading, setIsFading] = useState(false)
   const [isMounted, setIsMounted] = useState(true)
   const videoRef = useRef(null)
+  const completedRef = useRef(false)
+
+  // Target playback rate: 1.8x turns the 10s video into a punchy ~5.5s clip
+  // This makes the video faster and the 1-100% count smoother and slower (~5.5s total)
+  const PLAYBACK_RATE = 1.8
+
+  const completeAndOpen = useCallback(() => {
+    if (completedRef.current) return
+    completedRef.current = true
+
+    // Set exactly 100% at video completion
+    setProgress(100)
+
+    // At the exact moment the loader completes, fade out and open the website
+    setIsFading(true)
+    const fadeTimer = setTimeout(() => {
+      setIsMounted(false)
+      document.body.style.overflow = ''
+    }, 600)
+
+    return () => clearTimeout(fadeTimer)
+  }, [])
 
   useEffect(() => {
-    // Check user preference for motion
-    const prefersReducedMotion =
-      typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    // Lock page scroll while preloader is active
+    // Prevent background scrolling while preloader is active
     const originalOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
 
-    // Set video playback rate to 0.6x for a slower, cinematic athletic motion
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.6
-      videoRef.current.play().catch(() => {
-        // Autoplay may be restricted in some browsers; muted handles most
+    const video = videoRef.current
+    if (video) {
+      video.playbackRate = PLAYBACK_RATE
+      video.play().catch(() => {
+        // Handle browser autoplay policies
       })
     }
 
-    let isPageReady = typeof document !== 'undefined' && document.readyState === 'complete'
-    const handleLoad = () => {
-      isPageReady = true
-    }
+    let animId = null
+    let lastPercent = 1
 
-    if (!isPageReady && typeof window !== 'undefined') {
-      window.addEventListener('load', handleLoad)
-    }
+    // Continuously lock the 1-100% progress counter to the video's actual playback time
+    const syncWithVideo = () => {
+      if (completedRef.current) return
 
-    const startTime = performance.now()
-    const MIN_DURATION = prefersReducedMotion ? 800 : 3800 // Slower tempo (~4.0s total)
-    const stepInterval = prefersReducedMotion ? 12 : 40 // Slower tick per percent (40ms)
+      if (video && video.duration && !isNaN(video.duration)) {
+        const ratio = video.currentTime / video.duration
+        // Map 0 -> duration to 1 -> 99
+        const targetPercent = Math.min(99, Math.max(1, Math.floor(ratio * 100)))
 
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval)
-          return 100
+        if (targetPercent > lastPercent) {
+          lastPercent = targetPercent
+          setProgress(targetPercent)
         }
 
-        const elapsed = performance.now() - startTime
-
-        // Hold smoothly around 90-95% if minimum time has not elapsed or page is still loading
-        if (prev >= 90 && (!isPageReady || elapsed < MIN_DURATION * 0.8)) {
-          return prev < 95 ? prev + 1 : prev
+        // When video reaches its end
+        if (video.ended || video.currentTime >= video.duration - 0.08) {
+          completeAndOpen()
+          return
         }
+      }
 
-        return prev + 1
-      })
-    }, stepInterval)
+      animId = requestAnimationFrame(syncWithVideo)
+    }
+
+    animId = requestAnimationFrame(syncWithVideo)
+
+    // Fallback safety timeout so visitor is never trapped if video cannot load
+    const safetyTimer = setTimeout(() => {
+      completeAndOpen()
+    }, 7000)
 
     return () => {
-      clearInterval(interval)
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('load', handleLoad)
-      }
+      cancelAnimationFrame(animId)
+      clearTimeout(safetyTimer)
       document.body.style.overflow = originalOverflow
     }
-  }, [])
-
-  // Handle completion fade out once 100% is reached
-  useEffect(() => {
-    if (progress < 100) return
-
-    const prefersReducedMotion =
-      typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    const holdTime = prefersReducedMotion ? 80 : 360
-    const fadeDuration = prefersReducedMotion ? 200 : 700
-
-    const holdTimer = setTimeout(() => {
-      setIsFading(true)
-      const unmountTimer = setTimeout(() => {
-        setIsMounted(false)
-        document.body.style.overflow = ''
-      }, fadeDuration)
-
-      return () => clearTimeout(unmountTimer)
-    }, holdTime)
-
-    return () => clearTimeout(holdTimer)
-  }, [progress])
+  }, [completeAndOpen])
 
   if (!isMounted) return null
 
@@ -95,7 +89,7 @@ export default function Preloader() {
       aria-label="Loading Altitude Fitness"
       aria-live="polite"
       aria-busy={!isFading}
-      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center p-4 sm:p-6 select-none transition-opacity duration-700 ease-out ${
+      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center p-4 sm:p-6 select-none transition-opacity duration-600 ease-out ${
         isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
       style={{
@@ -140,13 +134,13 @@ export default function Preloader() {
             ref={videoRef}
             src="/Loader/Loader.mp4"
             autoPlay
-            loop
             muted
             playsInline
             preload="auto"
             onLoadedMetadata={(e) => {
-              e.currentTarget.playbackRate = 0.6
+              e.currentTarget.playbackRate = PLAYBACK_RATE
             }}
+            onEnded={completeAndOpen}
             className="w-full h-full object-contain pointer-events-none select-none drop-shadow-[0_0_40px_rgba(0,0,0,0.9)]"
             style={{
               maxHeight: '100%',
