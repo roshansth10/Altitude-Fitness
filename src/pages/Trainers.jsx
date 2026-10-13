@@ -35,12 +35,14 @@ const trainers = [
 
 const SocialIcon = ({ type }) => {
   const Icon = type === 'instagram' ? Globe : type === 'facebook' ? Share2 : Mail
+  const label = type.charAt(0).toUpperCase() + type.slice(1)
   return (
     <a
       href="#"
-      className="w-8 h-8 rounded-full border border-gray-700 flex items-center justify-center text-gray-500 hover:text-[#c6ff00] hover:border-[#c6ff00] transition-all duration-200"
+      aria-label={label}
+      className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-gray-700 flex items-center justify-center text-gray-500 hover:text-[#c6ff00] hover:border-[#c6ff00] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#c6ff00]"
     >
-      <Icon size={14} />
+      <Icon size={16} />
     </a>
   )
 }
@@ -53,7 +55,7 @@ export default function Trainers() {
   return (
     <div>
       {/* ====== HERO ====== */}
-      <section className="relative min-h-[60vh] lg:min-h-[70vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[60vh] min-h-[60svh] min-h-[60dvh] lg:min-h-[70vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="/img/trainer_arjun.jpg"

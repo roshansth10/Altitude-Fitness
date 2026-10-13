@@ -28,27 +28,27 @@ export default function Contact() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/75 to-black/50" />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
-          <p className="text-[#c6ff00] text-xs font-bold tracking-[0.3em] uppercase mb-3">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-16 sm:py-20">
+          <p className="text-[#c6ff00] text-xs font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-3">
             Get In Touch
           </p>
-          <h1 className="text-white font-black uppercase text-3xl sm:text-5xl lg:text-6xl xl:text-7xl leading-none mb-4">
+          <h1 className="text-white font-black uppercase text-3xl min-[400px]:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-none mb-4">
             VISIT OUR
             <br />
             KATHMANDU LOCATION
           </h1>
-          <p className="text-gray-300 text-lg max-w-xl mx-auto">
-            Have questions or ready to start? We'd love to hear from you.
+          <p className="text-gray-300 text-base sm:text-lg max-w-xl mx-auto">
+            Have questions or ready to start? We&apos;d love to hear from you.
           </p>
         </div>
       </section>
 
       {/* ====== CONTACT GRID ====== */}
-      <section className="py-16 lg:py-24 bg-[#0a0a0a]">
+      <section className="py-14 sm:py-16 lg:py-24 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 min-w-0">
             {/* Left: Info + Form */}
-            <div className="space-y-10">
+            <div className="space-y-10 min-w-0">
               {/* Contact details */}
               <div className="space-y-6">
                 <h2 className="text-white font-black uppercase text-2xl tracking-wide">
@@ -97,16 +97,16 @@ export default function Contact() {
                 href="https://maps.google.com/?q=Lazimpat+Kathmandu+Nepal"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#c6ff00] text-black font-bold text-sm tracking-wide hover:bg-[#d4ff00] hover:shadow-[0_0_25px_rgba(198,255,0,0.4)] transition-all duration-300"
+                className="inline-flex items-center min-h-[48px] gap-2 px-7 py-3.5 rounded-full bg-[#c6ff00] text-black font-bold text-sm tracking-wide hover:bg-[#d4ff00] hover:shadow-[0_0_25px_rgba(198,255,0,0.4)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#c6ff00]"
               >
                 GET DIRECTIONS <ArrowRight size={16} />
               </a>
             </div>
 
-            {/* Right: Map */}
-            <div className="space-y-8">
+            {/* Right: Map & Form */}
+            <div className="space-y-8 min-w-0">
               {/* Map iframe */}
-              <div className="relative rounded-2xl overflow-hidden border border-gray-800 h-80 lg:h-96">
+              <div className="relative rounded-2xl overflow-hidden border border-gray-800 h-72 sm:h-80 lg:h-96 w-full">
                 <iframe
                   title="Altitude Fitness Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.8012!2d85.3193!3d27.7172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb190a74f8a5c1%3A0x7de8cbf4d10c8bbf!2sLazimpat%2C%20Kathmandu%2044600%2C%20Nepal!5e0!3m2!1sen!2snp!4v1700000000000!5m2!1sen!2snp"
@@ -127,19 +127,19 @@ export default function Contact() {
               </div>
 
               {/* Contact form */}
-              <div className="bg-[#111111] border border-gray-800 rounded-2xl p-6 lg:p-8">
+              <div className="bg-[#111111] border border-gray-800 rounded-2xl p-5 sm:p-6 lg:p-8 min-w-0">
                 <h3 className="text-white font-black uppercase text-xl tracking-wide mb-6">
                   Send a Message
                 </h3>
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <input
                       type="text"
                       placeholder="Your Name"
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       required
-                      className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#c6ff00] transition-colors"
+                      className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-4 py-3 text-white text-base placeholder-gray-600 focus:outline-none focus:border-[#c6ff00] focus:ring-1 focus:ring-[#c6ff00] transition-colors"
                     />
                     <input
                       type="email"
@@ -147,7 +147,7 @@ export default function Contact() {
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       required
-                      className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#c6ff00] transition-colors"
+                      className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-4 py-3 text-white text-base placeholder-gray-600 focus:outline-none focus:border-[#c6ff00] focus:ring-1 focus:ring-[#c6ff00] transition-colors"
                     />
                   </div>
                   <input
@@ -155,7 +155,7 @@ export default function Contact() {
                     placeholder="Phone Number"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#c6ff00] transition-colors"
+                    className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-4 py-3 text-white text-base placeholder-gray-600 focus:outline-none focus:border-[#c6ff00] focus:ring-1 focus:ring-[#c6ff00] transition-colors"
                   />
                   <textarea
                     placeholder="Your message..."
@@ -163,11 +163,11 @@ export default function Contact() {
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     required
-                    className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#c6ff00] transition-colors resize-none"
+                    className="w-full bg-[#0a0a0a] border border-gray-800 rounded-xl px-4 py-3 text-white text-base placeholder-gray-600 focus:outline-none focus:border-[#c6ff00] focus:ring-1 focus:ring-[#c6ff00] transition-colors resize-none"
                   />
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 py-3.5 rounded-full bg-[#c6ff00] text-black font-bold text-sm tracking-wide hover:bg-[#d4ff00] hover:shadow-[0_0_25px_rgba(198,255,0,0.4)] transition-all duration-300"
+                    className="w-full min-h-[48px] flex items-center justify-center gap-2 py-3.5 rounded-full bg-[#c6ff00] text-black font-bold text-sm tracking-wide hover:bg-[#d4ff00] hover:shadow-[0_0_25px_rgba(198,255,0,0.4)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#c6ff00]"
                   >
                     {sent ? 'MESSAGE SENT! ✓' : (<><Send size={16} /> SEND MESSAGE</>)}
                   </button>

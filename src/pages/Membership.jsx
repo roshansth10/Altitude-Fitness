@@ -156,11 +156,11 @@ export default function Membership() {
           </div>
 
           {/* Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch min-w-0">
             {currentPlans.map(({ name, price, period, popular, features }) => (
               <div
                 key={name}
-                className={`relative rounded-2xl border transition-all duration-300 ${
+                className={`relative rounded-2xl border transition-all duration-300 flex flex-col justify-between h-full min-w-0 ${
                   popular
                     ? 'border-[#c6ff00] bg-[#0f1a00] shadow-[0_0_40px_rgba(198,255,0,0.15)]'
                     : 'border-gray-800/50 bg-[#111111] hover:border-gray-700'
@@ -168,39 +168,41 @@ export default function Membership() {
               >
                 {/* Popular badge */}
                 {popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#c6ff00] text-black text-xs font-black tracking-widest uppercase px-4 py-1.5 rounded-full">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#c6ff00] text-black text-xs font-black tracking-widest uppercase px-4 py-1.5 rounded-full select-none">
                     MOST POPULAR
                   </div>
                 )}
 
-                <div className="p-8">
-                  <h3 className="text-white font-black text-xl uppercase tracking-wide mb-2">
-                    {name}
-                  </h3>
-                  <div className="flex items-end gap-1 mb-1">
-                    <span className="text-white font-black text-3xl sm:text-4xl">{price}</span>
-                    <span className="text-gray-400 text-sm mb-1">{period}</span>
+                <div className="p-6 sm:p-8 flex flex-col justify-between h-full min-w-0">
+                  <div>
+                    <h3 className="text-white font-black text-xl uppercase tracking-wide mb-2">
+                      {name}
+                    </h3>
+                    <div className="flex items-end gap-1 mb-1">
+                      <span className="text-white font-black text-3xl sm:text-4xl">{price}</span>
+                      <span className="text-gray-400 text-sm mb-1">{period}</span>
+                    </div>
+
+                    <div className="my-6 h-px bg-gray-800" />
+
+                    <ul className="space-y-3 mb-8">
+                      {features.map((f) => (
+                        <li key={f} className="flex items-start gap-3">
+                          <CheckCircle2
+                            size={18}
+                            className={`flex-shrink-0 mt-0.5 ${
+                              popular ? 'text-[#c6ff00]' : 'text-gray-500'
+                            }`}
+                          />
+                          <span className="text-gray-300 text-sm">{f}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-
-                  <div className="my-6 h-px bg-gray-800" />
-
-                  <ul className="space-y-3 mb-8">
-                    {features.map((f) => (
-                      <li key={f} className="flex items-start gap-3">
-                        <CheckCircle2
-                          size={18}
-                          className={`flex-shrink-0 mt-0.5 ${
-                            popular ? 'text-[#c6ff00]' : 'text-gray-500'
-                          }`}
-                        />
-                        <span className="text-gray-300 text-sm">{f}</span>
-                      </li>
-                    ))}
-                  </ul>
 
                   <Link
                     to="/contact"
-                    className={`block w-full text-center py-3.5 rounded-full font-bold text-sm tracking-wide transition-all duration-300 ${
+                    className={`block w-full min-h-[48px] flex items-center justify-center text-center py-3.5 rounded-full font-bold text-sm tracking-wide transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#c6ff00] ${
                       popular
                         ? 'bg-[#c6ff00] text-black hover:bg-[#d4ff00] hover:shadow-[0_0_25px_rgba(198,255,0,0.4)]'
                         : 'border border-gray-700 text-white hover:border-[#c6ff00] hover:text-[#c6ff00]'
@@ -225,17 +227,17 @@ export default function Membership() {
       </section>
 
       {/* ====== FAQ or compare ====== */}
-      <section className="py-16 bg-[#111111] border-t border-gray-800/50">
+      <section className="py-14 sm:py-16 bg-[#111111] border-t border-gray-800/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <h2 className="text-white font-black uppercase text-3xl sm:text-4xl">
             Not Sure Which Plan?
           </h2>
-          <p className="text-gray-400">
-            Come in for a free consultation and we'll help you choose the right program for your goals.
+          <p className="text-gray-400 max-w-xl mx-auto leading-relaxed">
+            Come in for a free consultation and we&apos;ll help you choose the right program for your goals.
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#c6ff00] text-black font-bold text-sm tracking-wide hover:bg-[#d4ff00] hover:shadow-[0_0_30px_rgba(198,255,0,0.4)] transition-all duration-300"
+            className="inline-flex items-center min-h-[48px] gap-2 px-8 py-3.5 rounded-full bg-[#c6ff00] text-black font-bold text-sm tracking-wide hover:bg-[#d4ff00] hover:shadow-[0_0_30px_rgba(198,255,0,0.4)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#c6ff00]"
           >
             GET FREE CONSULTATION <ArrowRight size={16} />
           </Link>

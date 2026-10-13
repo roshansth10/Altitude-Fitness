@@ -36,8 +36,8 @@ const transformations = [
     weeks: '12 Weeks',
     fat: '-6.3',
     muscle: '+5% Muscle',
-    before: 'https://images.unsplash.com/photo-1580086319619-3ed498161c77?w=300&q=80',
-    after: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&q=80',
+    before: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&auto=format&fit=crop&q=80',
+    after: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&auto=format&fit=crop&q=80',
   },
   {
     name: 'Raj Kumar',
@@ -47,8 +47,8 @@ const transformations = [
     weeks: '24 Weeks',
     fat: '-4.1',
     muscle: '+12% Muscle',
-    before: 'https://images.unsplash.com/photo-1609899465382-c3d1bbe4b957?w=300&q=80',
-    after: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300&q=80',
+    before: 'https://images.unsplash.com/photo-1609899465382-c3d1bbe4b957?w=600&auto=format&fit=crop&q=80',
+    after: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&auto=format&fit=crop&q=80',
   },
 ]
 
@@ -129,78 +129,83 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       {/* ====== HERO ====== */}
-      <section className="relative min-h-screen flex items-center justify-center">
+      <section className="relative min-h-screen min-h-[100svh] min-h-[100dvh] flex items-center justify-center pt-20 pb-16 sm:py-24 lg:py-0 overflow-hidden">
         {/* BG image */}
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=90"
-            alt="Gym"
-            className="w-full h-full object-cover object-center"
+            alt="Gym member training with weights at Altitude Fitness Kathmandu"
+            className="w-full h-full object-cover object-[75%_center] sm:object-[70%_center] md:object-center"
+            fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/30" />
-        </div>
-
-        {/* Watermark text */}
-        <div className="absolute right-12 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
-          <p className="text-white/10 font-black text-[80px] leading-none tracking-widest rotate-90 select-none uppercase">
-            DISCIPLINE BUILDS FREEDOM
-          </p>
+          {/* Overlays tuned for mobile and desktop contrast */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 md:via-black/80 to-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/60 md:via-transparent to-black/40" />
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-2xl">
-            <p className="text-[#c6ff00] text-xs font-bold tracking-[0.3em] uppercase mb-6">
+            <p className="text-[#c6ff00] text-xs font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-4 sm:mb-6">
               Premium Fitness Club in Kathmandu
             </p>
-            <h1 className="font-black uppercase leading-none">
-              <span className="text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl block">
+            <h1 className="font-black uppercase leading-[0.92] tracking-tight">
+              <span className="text-white text-4xl min-[400px]:text-5xl sm:text-6xl md:text-7xl lg:text-8xl block">
                 PUSH YOUR
               </span>
               <span
-                className="text-[#c6ff00] text-5xl sm:text-6xl md:text-7xl lg:text-8xl block"
-                style={{ textShadow: '0 0 40px rgba(198,255,0,0.3)' }}
+                className="text-[#c6ff00] text-4xl min-[400px]:text-5xl sm:text-6xl md:text-7xl lg:text-8xl block"
+                style={{ textShadow: '0 0 40px rgba(198,255,0,0.35)' }}
               >
                 LIMITS
               </span>
             </h1>
-            <p className="text-gray-300 text-lg mt-6 mb-8 font-medium">
+            <p className="text-gray-200 sm:text-gray-300 text-base sm:text-lg mt-5 sm:mt-6 mb-7 sm:mb-8 font-medium max-w-lg leading-relaxed">
               Stronger Body. Sharper Mind. Better You.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 mb-10">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 mb-7 sm:mb-10 w-full sm:w-auto">
               <Link
                 to="/programs"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#c6ff00] text-black font-bold text-sm tracking-wide hover:bg-[#d4ff00] hover:shadow-[0_0_30px_rgba(198,255,0,0.5)] transition-all duration-300"
+                className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#c6ff00] text-black font-bold text-sm tracking-wide hover:bg-[#d4ff00] hover:shadow-[0_0_30px_rgba(198,255,0,0.5)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#c6ff00] focus:ring-offset-2 focus:ring-offset-black"
               >
                 START TRAINING <ArrowRight size={16} />
               </Link>
               <Link
                 to="/gym"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/40 text-white font-bold text-sm tracking-wide hover:border-white hover:bg-white/5 transition-all duration-300"
+                className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/40 text-white font-bold text-sm tracking-wide hover:border-white hover:bg-white/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
               >
                 EXPLORE THE GYM
               </Link>
             </div>
 
             <div className="flex items-center gap-4">
-              <button className="w-12 h-12 rounded-full border-2 border-[#c6ff00] flex items-center justify-center text-[#c6ff00] hover:bg-[#c6ff00]/10 transition-all duration-200">
+              <button
+                type="button"
+                aria-label="Watch gym video presentation"
+                className="w-12 h-12 min-w-[48px] min-h-[48px] rounded-full border-2 border-[#c6ff00] flex items-center justify-center text-[#c6ff00] hover:bg-[#c6ff00]/15 active:bg-[#c6ff00]/25 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#c6ff00]"
+              >
                 <Play size={18} fill="currentColor" />
               </button>
-              <span className="text-white font-semibold text-sm">Watch Video</span>
+              <span className="text-white font-semibold text-sm select-none">Watch Video</span>
+            </div>
+
+            {/* Mobile-only Open Daily schedule (stacked cleanly below action row with no collision) */}
+            <div className="mt-8 pt-6 border-t border-gray-800/80 sm:hidden">
+              <p className="text-[#c6ff00] text-xs font-bold tracking-[0.2em] uppercase">
+                OPEN DAILY
+              </p>
+              <p className="text-gray-200 text-sm font-medium mt-0.5">5:00 AM – 10:00 PM</p>
             </div>
           </div>
 
-          {/* Bottom info bar */}
-          <div className="absolute bottom-8 sm:bottom-12 left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8">
-            <div className="max-w-7xl mx-auto flex flex-row items-end justify-end gap-4">
-              <div className="text-right">
-                <p className="text-[#c6ff00] text-xs font-bold tracking-[0.2em] uppercase">
-                  OPEN DAILY
-                </p>
-                <p className="text-white text-xs sm:text-sm font-medium">5:00 AM – 10:00 PM</p>
-              </div>
+          {/* Desktop/Tablet Bottom info bar (bottom right) */}
+          <div className="hidden sm:block absolute bottom-8 sm:bottom-12 right-6 lg:right-8 z-10 pointer-events-none">
+            <div className="text-right">
+              <p className="text-[#c6ff00] text-xs font-bold tracking-[0.2em] uppercase">
+                OPEN DAILY
+              </p>
+              <p className="text-white text-xs sm:text-sm font-medium mt-0.5">5:00 AM – 10:00 PM</p>
             </div>
           </div>
         </div>
@@ -221,25 +226,25 @@ export default function Home() {
       </section>
 
       {/* ====== MISSION STATEMENT ====== */}
-      <section className="py-20 lg:py-28">
+      <section className="py-14 sm:py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="font-black uppercase text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
-                <span className="text-white block">WE DON'T TRAIN</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center min-w-0">
+            <div className="min-w-0">
+              <h2 className="font-black uppercase text-3xl min-[400px]:text-4xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight break-words">
+                <span className="text-white block">WE DON&apos;T TRAIN</span>
                 <span className="text-white block">FOR THE MIRROR.</span>
                 <span className="text-[#c6ff00] block">WE TRAIN FOR</span>
-                <span className="text-[#c6ff00] block">WHAT'S NEXT.</span>
+                <span className="text-[#c6ff00] block">WHAT&apos;S NEXT.</span>
               </h2>
             </div>
-            <div>
-              <p className="text-gray-300 text-lg leading-relaxed">
-                At Altitude Fitness, we believe fitness is more than just a goal — it's a lifestyle. 
+            <div className="min-w-0">
+              <p className="text-gray-300 text-base sm:text-lg leading-relaxed break-words">
+                At Altitude Fitness, we believe fitness is more than just a goal — it&apos;s a lifestyle. 
                 Our modern facility, expert trainers and supportive community help you become the 
                 best version of yourself.
               </p>
-              <div className="mt-8 pt-8 border-t border-gray-800">
-                <p className="text-gray-500 text-sm tracking-wider uppercase">
+              <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-800">
+                <p className="text-gray-500 text-xs sm:text-sm tracking-wider uppercase font-semibold">
                   Premium Fitness Club · Kathmandu, Nepal
                 </p>
               </div>
@@ -294,12 +299,12 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 items-start lg:items-center gap-12">
-            <div>
-              <p className="text-[#c6ff00] text-xs font-bold tracking-[0.3em] uppercase mb-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-start lg:items-center gap-10 lg:gap-12 min-w-0">
+            <div className="min-w-0">
+              <p className="text-[#c6ff00] text-xs font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-4">
                 Core Training Pillars
               </p>
-              <h2 className="font-black uppercase text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
+              <h2 className="font-black uppercase text-white text-3xl min-[400px]:text-4xl sm:text-5xl lg:text-6xl leading-tight break-words">
                 YOUR GOALS.
                 <br />
                 OUR SUPPORT.
@@ -308,23 +313,23 @@ export default function Home() {
                 <br />
                 SEE REAL RESULTS.
               </h2>
-              <p className="text-gray-300 text-sm sm:text-base mt-6 max-w-md leading-relaxed">
+              <p className="text-gray-300 text-sm sm:text-base mt-5 sm:mt-6 max-w-md leading-relaxed break-words">
                 Click any pillar to explore our methodology, specialized equipment, and tailored coaching systems.
               </p>
             </div>
 
-            <div className="flex flex-col divide-y divide-white/10">
+            <div className="flex flex-col divide-y divide-white/10 min-w-0">
               {trainingPillars.map((pillar, i) => {
                 const isActive = activePillar === i
                 return (
                   <div
                     key={pillar.id}
-                    className="transition-all duration-300"
+                    className="transition-all duration-300 min-w-0"
                   >
                     <button
                       type="button"
                       onClick={() => setActivePillar(isActive ? null : i)}
-                      className="w-full flex items-center justify-between py-4 sm:py-5 text-left group cursor-pointer transition-all"
+                      className="w-full min-h-[48px] flex items-center justify-between py-4 sm:py-5 text-left group cursor-pointer transition-all focus:outline-none focus:ring-2 focus:ring-[#c6ff00] focus:ring-offset-2 focus:ring-offset-black rounded-lg px-2 sm:px-0"
                       aria-expanded={isActive}
                     >
                       <span
@@ -401,14 +406,14 @@ export default function Home() {
       </section>
 
       {/* ====== TRANSFORMATIONS / TESTIMONIALS ====== */}
-      <section className="py-20 lg:py-28 bg-[#0a0a0a]">
+      <section className="py-14 sm:py-20 lg:py-28 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-12">
             <div>
-              <p className="text-[#c6ff00] text-xs font-bold tracking-[0.3em] uppercase mb-3">
+              <p className="text-[#c6ff00] text-xs font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-3">
                 Transformations
               </p>
-              <h2 className="text-white font-black uppercase text-4xl sm:text-5xl leading-tight">
+              <h2 className="text-white font-black uppercase text-3xl min-[400px]:text-4xl sm:text-5xl leading-tight">
                 REAL PEOPLE.
                 <br />
                 REAL PROGRESS.
@@ -416,41 +421,49 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-3">
               <button
+                type="button"
                 onClick={prev}
-                className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:border-[#c6ff00] hover:text-[#c6ff00] transition-all"
+                aria-label="Previous member transformation"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:border-[#c6ff00] hover:text-[#c6ff00] transition-all focus:outline-none focus:ring-2 focus:ring-[#c6ff00]"
               >
-                <ChevronLeft size={18} />
+                <ChevronLeft size={20} />
               </button>
               <button
+                type="button"
                 onClick={next}
-                className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:border-[#c6ff00] hover:text-[#c6ff00] transition-all"
+                aria-label="Next member transformation"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:border-[#c6ff00] hover:text-[#c6ff00] transition-all focus:outline-none focus:ring-2 focus:ring-[#c6ff00]"
               >
-                <ChevronRight size={18} />
+                <ChevronRight size={20} />
               </button>
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start min-w-0">
             {/* Before / After */}
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-3">
-                <div className="relative rounded-xl overflow-hidden">
+                <div className="relative rounded-xl overflow-hidden bg-[#161616] aspect-[4/5] sm:h-72 w-full">
                   <img
                     src={t.before}
-                    alt="Before"
-                    className="w-full h-72 object-cover"
+                    alt={`Before transformation - ${t.name}`}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
                   />
-                  <div className="absolute bottom-3 left-3 bg-black/70 px-3 py-1 rounded text-white text-xs font-bold uppercase tracking-wide">
+                  <div className="absolute bottom-3 left-3 bg-black/80 backdrop-blur-xs px-3 py-1 rounded text-white text-xs font-bold uppercase tracking-wide">
                     Before
                   </div>
                 </div>
-                <div className="relative rounded-xl overflow-hidden">
+                <div className="relative rounded-xl overflow-hidden bg-[#161616] aspect-[4/5] sm:h-72 w-full">
                   <img
                     src={t.after}
-                    alt="After"
-                    className="w-full h-72 object-cover"
+                    alt={`After transformation - ${t.name}`}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
                   />
-                  <div className="absolute bottom-3 left-3 bg-[#c6ff00]/90 px-3 py-1 rounded text-black text-xs font-bold uppercase tracking-wide">
+                  <div className="absolute bottom-3 left-3 bg-[#c6ff00]/95 backdrop-blur-xs px-3 py-1 rounded text-black text-xs font-bold uppercase tracking-wide shadow-sm">
                     After
                   </div>
                 </div>
@@ -509,16 +522,17 @@ export default function Home() {
       </section>
 
       {/* ====== FINAL CTA BAND ====== */}
-      <section className="bg-[#c6ff00] py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-8">
-          <h2 className="text-black font-black uppercase text-3xl sm:text-4xl text-center sm:text-left">
+      <section id="cta" className="bg-[#c6ff00] py-7 sm:py-8 lg:py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-8">
+          <h2 className="text-black font-black uppercase text-2xl min-[400px]:text-3xl sm:text-3xl lg:text-[2rem] leading-tight text-center sm:text-left tracking-tight">
             Ready to Transform
-            <br />
+            <span className="sm:hidden"> </span>
+            <br className="hidden sm:inline" />
             Your Life?
           </h2>
           <Link
             to="/membership"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-black text-white font-bold text-sm tracking-wide hover:bg-gray-900 hover:shadow-[0_0_30px_rgba(0,0,0,0.5)] transition-all duration-300 flex-shrink-0"
+            className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-black text-white font-bold text-sm tracking-wide hover:bg-neutral-900 hover:shadow-[0_0_25px_rgba(0,0,0,0.45)] transition-all duration-300 flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-[#c6ff00]"
           >
             JOIN NOW <ArrowRight size={16} />
           </Link>

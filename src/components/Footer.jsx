@@ -52,17 +52,23 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Kathmandu's premier fitness club. Training harder, living better, 
+              Kathmandu&apos;s premier fitness club. Training harder, living better, 
               and pushing every limit — together.
             </p>
-            <div className="flex items-center gap-4">
-              {[Globe, Share2, Play, Mail].map((Icon, i) => (
+            <div className="flex items-center gap-3">
+              {[
+                { Icon: Globe, label: 'Website' },
+                { Icon: Share2, label: 'Social Share' },
+                { Icon: Play, label: 'Video Channel' },
+                { Icon: Mail, label: 'Email' }
+              ].map(({ Icon, label }, i) => (
                 <a
                   key={i}
                   href="#"
-                  className="w-9 h-9 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-[#c6ff00] hover:border-[#c6ff00] transition-all duration-200"
+                  aria-label={label}
+                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-[#c6ff00] hover:border-[#c6ff00] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#c6ff00]"
                 >
-                  <Icon size={16} />
+                  <Icon size={18} />
                 </a>
               ))}
             </div>

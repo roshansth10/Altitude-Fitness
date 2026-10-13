@@ -20,28 +20,8 @@
   /* Lenis requires html to NOT have scroll-behavior: smooth
      as Lenis handles smooth scrolling itself */
   html {
+    overflow-x: clip;
     /* scroll-behavior is intentionally omitted — Lenis manages this */
-  }
-
-  html.lenis,
-  html.lenis body {
-    height: auto;
-  }
-
-  .lenis.lenis-smooth {
-    scroll-behavior: auto !important;
-  }
-
-  .lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
-  }
-
-  .lenis.lenis-stopped {
-    overflow: hidden;
-  }
-
-  .lenis.lenis-scrolling iframe {
-    pointer-events: none;
   }
 
   body {
@@ -50,12 +30,23 @@
     font-family: 'Inter', 'Montserrat', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     /* Prevent horizontal scroll on mobile */
-    overflow-x: hidden;
+    overflow-x: clip;
+    min-width: 0;
+    max-width: 100vw;
+  }
+
+  /* Safe area inset support */
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
   /* Ensure images don't overflow on small screens */
   img {
     max-width: 100%;
+    height: auto;
   }
 
   ::selection {

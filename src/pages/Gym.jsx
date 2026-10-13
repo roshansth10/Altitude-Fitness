@@ -57,32 +57,32 @@ export default function Gym() {
   return (
     <div>
       {/* ====== HERO ====== */}
-      <section className="relative min-h-[65vh] flex items-end overflow-hidden">
+      <section className="relative min-h-[65vh] min-h-[65svh] min-h-[65dvh] flex items-end overflow-hidden pt-24 pb-12 sm:pb-16">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=90"
             alt="Gym interior"
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/50 to-black/20" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/60 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-transparent" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
-          <p className="text-[#c6ff00] text-xs font-bold tracking-[0.3em] uppercase mb-3">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <p className="text-[#c6ff00] text-xs font-bold tracking-[0.25em] sm:tracking-[0.3em] uppercase mb-3">
             Our Gym
           </p>
-          <h1 className="text-white font-black uppercase text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-none mb-4">
+          <h1 className="text-white font-black uppercase text-3xl min-[400px]:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-none mb-4">
             A SPACE BUILT FOR
             <br />
             <span className="text-[#c6ff00]">SERIOUS TRAINING</span>
           </h1>
-          <p className="text-gray-300 mb-8 max-w-xl text-lg">
+          <p className="text-gray-300 mb-8 max-w-xl text-base sm:text-lg leading-relaxed">
             Modern equipment, clean environment and a motivating atmosphere — everything you need to reach your goals.
           </p>
           <Link
             to="/membership"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-[#c6ff00] text-[#c6ff00] font-bold text-sm tracking-wide hover:bg-[#c6ff00] hover:text-black transition-all duration-300"
+            className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-[#c6ff00] text-[#c6ff00] font-bold text-sm tracking-wide hover:bg-[#c6ff00] hover:text-black transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#c6ff00]"
           >
             EXPLORE EQUIPMENT <ArrowRight size={16} />
           </Link>

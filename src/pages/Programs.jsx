@@ -91,7 +91,7 @@ export default function Programs() {
             PROGRAMS
           </h1>
           <p className="text-gray-300 mt-4 max-w-xl">
-            Customized training programs for every goal. Choose your path, and let's build a stronger you.
+            Customized training programs for every goal. Choose your path, and let&apos;s build a stronger you.
           </p>
         </div>
       </section>
