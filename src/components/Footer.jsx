@@ -1,29 +1,29 @@
-import { Link } from 'react-router-dom'
-import { Globe, Share2, Play, Mail } from 'lucide-react'
+import { Link } from "react-router-dom";
+import { Globe, Share2, Play, Mail } from "lucide-react";
 
 const footerLinks = {
   Pages: [
-    { to: '/', label: 'Home' },
-    { to: '/programs', label: 'Programs' },
-    { to: '/trainers', label: 'Trainers' },
-    { to: '/gym', label: 'Gym' },
-    { to: '/membership', label: 'Membership' },
-    { to: '/contact', label: 'Contact' },
+    { to: "/", label: "Home" },
+    { to: "/programs", label: "Programs" },
+    { to: "/trainers", label: "Trainers" },
+    { to: "/gym", label: "Gym" },
+    { to: "/membership", label: "Membership" },
+    { to: "/contact", label: "Contact" },
   ],
   Programs: [
-    { to: '/programs', label: 'Strength Training' },
-    { to: '/programs', label: 'Hypertrophy' },
-    { to: '/programs', label: 'Fat Loss' },
-    { to: '/programs', label: 'Conditioning' },
-    { to: '/programs', label: 'Personal Training' },
+    { to: "/programs", label: "Strength Training" },
+    { to: "/programs", label: "Hypertrophy" },
+    { to: "/programs", label: "Fat Loss" },
+    { to: "/programs", label: "Conditioning" },
+    { to: "/programs", label: "Personal Training" },
   ],
   Contact: [
-    { label: 'Lazimpat, Kathmandu, Nepal' },
-    { label: '+977 984-123-4567' },
-    { label: 'info@altitudefitness.com' },
-    { label: 'Mon–Sun: 5:00 AM – 10:00 PM' },
+    { label: "Lazimpat, Kathmandu, Nepal" },
+    { label: "+977 984-123-4567" },
+    { label: "info@altitudefitness.com" },
+    { label: "Mon–Sun: 5:00 AM – 10:00 PM" },
   ],
-}
+};
 
 export default function Footer() {
   return (
@@ -52,15 +52,15 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Kathmandu&apos;s premier fitness club. Training harder, living better, 
-              and pushing every limit — together.
+              Kathmandu&apos;s premier fitness club. Training harder, living
+              better, and pushing every limit — together.
             </p>
             <div className="flex items-center gap-3">
               {[
-                { Icon: Globe, label: 'Website' },
-                { Icon: Share2, label: 'Social Share' },
-                { Icon: Play, label: 'Video Channel' },
-                { Icon: Mail, label: 'Email' }
+                { Icon: Globe, label: "Website" },
+                { Icon: Share2, label: "Social Share" },
+                { Icon: Play, label: "Video Channel" },
+                { Icon: Mail, label: "Email" },
               ].map(({ Icon, label }, i) => (
                 <a
                   key={i}
@@ -136,7 +136,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-gray-800/50 mt-10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-6">
           <p className="text-gray-500 text-sm text-center sm:text-left">
-            © 2024 Altitude Fitness. All rights reserved.
+            © {new Date().getFullYear()} Altitude Fitness. All rights reserved.
           </p>
 
           {/* DX Studio credit */}
@@ -159,5 +159,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
