@@ -99,10 +99,10 @@ export default function Programs() {
       {/* ====== PROGRAM SELECTOR ====== */}
       <section className="bg-[#0a0a0a] py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-0 min-h-[600px]">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 min-h-[600px]">
             {/* Left: program list */}
-            <div className="lg:col-span-2 border-b lg:border-b-0 lg:border-r border-gray-800/50 pb-6 lg:pb-0 lg:pr-8">
-              <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible gap-0 scrollbar-hide">
+            <div className="lg:col-span-2 border-b lg:border-b-0 lg:border-r border-gray-800/50 pb-6 lg:pb-0 lg:pr-8 min-w-0">
+              <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible gap-0 scrollbar-hide" style={{WebkitOverflowScrolling:'touch'}}>
                 {programs.map((p, i) => (
                   <button
                     key={p.id}
@@ -173,7 +173,7 @@ export default function Programs() {
               </div>
 
               {/* Program photo */}
-              <div className="relative rounded-2xl overflow-hidden h-72 lg:h-80">
+              <div className="relative rounded-2xl overflow-hidden h-56 sm:h-72 lg:h-80">
                 <img
                   key={prog.img}
                   src={prog.img}
