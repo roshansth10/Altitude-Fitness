@@ -167,24 +167,24 @@ export default function Gym() {
       </section>
 
       {/* ====== NIGHT EXTERIOR / TAGLINE ====== */}
-      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[320px] sm:min-h-[360px] md:min-h-[420px] lg:min-h-[50vh] w-full flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1587483166702-bf9aa66bd791?w=1600&q=90"
+            src="/img/Gym_footer.jpg"
             alt="Gym exterior night"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-[center_58%] sm:object-center"
           />
           <div className="absolute inset-0 bg-black/75" />
         </div>
-        <div className="relative z-10 text-center px-4">
-          <h2 className="text-white font-black uppercase text-4xl sm:text-5xl lg:text-6xl leading-tight">
+        <div className="relative z-10 text-center px-4 sm:px-6">
+          <h2 className="text-white font-black uppercase text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight">
             TRAIN TOGETHER.
             <br />
             <span className="text-[#c6ff00]">GROW TOGETHER.</span>
           </h2>
           <Link
             to="/membership"
-            className="inline-flex items-center gap-2 mt-8 px-8 py-4 rounded-full bg-[#c6ff00] text-black font-bold text-sm tracking-wide hover:bg-[#d4ff00] hover:shadow-[0_0_30px_rgba(198,255,0,0.5)] transition-all duration-300"
+            className="inline-flex items-center gap-2 mt-6 sm:mt-8 px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-[#c6ff00] text-black font-bold text-xs sm:text-sm tracking-wide hover:bg-[#d4ff00] hover:shadow-[0_0_30px_rgba(198,255,0,0.5)] transition-all duration-300"
           >
             JOIN NOW <ArrowRight size={16} />
           </Link>
